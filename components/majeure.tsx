@@ -1,12 +1,17 @@
 import styles from '../styles/Majeure.module.css'
+import stylesMajeure from '../styles/Home.module.css'
 
-const MajeureFound = () => {
+type PropsMajeure = {
+  text: string;
+}
+
+const MajeureFound = ({ text }: PropsMajeure) => {
   return (
     <>
       <div className={styles.overlay}>
         <div className={styles.container}>
           {[...Array(60)].map((_, idx) => (
-            <svg className={styles.shape} key={idx} viewBox="0 0 100 115" preserveAspectRatio="xMidYMin slice">
+            <svg className={styles.shape} key={idx} viewBox="0 0 100 100" preserveAspectRatio="xMidYMin slice">
               <polygon points="" fill="none" stroke="hsl(320,100%,70%)" stroke-width="5">
                 <animate attributeName="points" repeatCount="indefinite" dur="4s" begin="0s" from="50 57.5, 50 57.5, 50 57.5" to="50 -75, 175 126, -75 126"></animate>
               </polygon>
@@ -22,6 +27,11 @@ const MajeureFound = () => {
             </svg>
           ))}
         </div>
+      </div>
+      <div className={stylesMajeure.container}>
+        <h1 className={stylesMajeure.majeure}>
+          {text}
+        </h1>
       </div>
     </>
   )

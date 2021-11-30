@@ -128,16 +128,8 @@ export default function Home({ subdomain, epiteanSub }: Props) {
   })
 
   if (epiteanSub) {
-    const text = availableDomains[subdomain];
     return (
-      <>
-        <MajeureFound />
-        <div className={styles.container}>
-          <h1 className={styles.majeure}>
-            {text}
-          </h1>
-        </div>
-      </>
+      <MajeureFound text={availableDomains[subdomain]} />
     )
   }
 
