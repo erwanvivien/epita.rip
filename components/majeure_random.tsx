@@ -86,7 +86,8 @@ const MajeureRandom = () => {
 
   useEffect(() => {
     setshuffle(shuffleArray(majeures));
-  })
+  }, [])
+
   return (
     <div className={styles.stage}>
       <div className={styles.rotate}>
