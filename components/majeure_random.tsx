@@ -8,6 +8,7 @@ type RingProps = {
 };
 
 import availableDomains from '../public/majeures.json';
+import Triangle from './triangle';
 
 const majeures = Object.keys(availableDomains).map((m) => m.toLocaleUpperCase());
 
@@ -20,49 +21,57 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
 
   return (
     <div className={styles.ring} style={additionalStyles}>
-      {shuffledMajeures.map((majeure, idx) => (
+      <div
+        className={styles.poster + (isStop ? ` ${styles.selected_majeure}` : '')}
+        style={{
+          borderWidth: 0,
+          transform: isStop ?
+            `rotateX(0deg) translateX(-50%) scale(1.5) translateZ(200px)` :
+            `rotateX(0deg) translateX(-50%) translateZ(200px)`,
+          backgroundColor: isStop ? "red" : "",
+          opacity: isStop ? 1 : 0.7,
+
+          position: 'absolute',
+          cursor: 'pointer',
+        }}
+
+        onClick={() => { window.location.href = `http://${shuffledMajeures[0]}.${process.env.REDIRECT_URL}` }}
+      >
+        {isStop &&
+          <div style={{
+            height: "100px",
+            width: "100%",
+            display: 'flex',
+            flexDirection: "row",
+            position: 'absolute',
+            top: '0px',
+            overflow: 'hidden',
+            borderRadius: 4,
+            zIndex: -1,
+          }}>
+            {[...Array(6)].map((_, idx) => (
+              <Triangle key={idx} />
+            ))}
+          </div>}
+
+        <p className={styles.itemsText}>
+          {shuffledMajeures[0]}
+        </p>
+      </div>
+
+      {shuffledMajeures.slice(1).map((majeure, idx) => (
         <div key={idx}
-          className={styles.poster + (isStop && idx === 0 ? ` ${styles.selected_majeure}` : '')}
+          className={styles.poster}
           style={{
-            transform: isStop && idx === 0 ?
-              `rotateX(${(360 / majeures.length) * idx}deg) translateX(-50%) scale(1.5) translateZ(200px)` :
-              `rotateX(${(360 / majeures.length) * idx}deg) translateX(-50%) translateZ(200px)`,
-            backgroundColor: isStop && idx === 0 ? "red" : "",
+            borderWidth: 0,
+            transform: `rotateX(${(360 / majeures.length) * (idx + 1)}deg) translateX(-50%) translateZ(200px)`,
             opacity: isStop ? 1 : 0.7,
 
             position: 'absolute',
+            cursor: 'pointer',
           }}
+          onClick={() => { window.location.href = `http://${majeure}.${process.env.REDIRECT_URL}` }}
         >
-          {isStop && idx === 0 &&
-            <div style={{
-              height: "100px",
-              width: "100%",
-              display: 'flex',
-              flexDirection: "row",
-              position: 'absolute',
-              top: '0px',
-              overflow: 'hidden',
-              borderRadius: 4,
-              zIndex: -1,
-            }}>
-              {[...Array(6)].map((_, idx) => (
-                <svg className={styles.shape} key={idx} viewBox="0 0 100 100" preserveAspectRatio="xMidYMin slice">
-                  <polygon points="" fill="none" stroke="hsl(320,100%,70%)" strokeWidth="5">
-                    <animate attributeName="points" repeatCount="indefinite" dur="4s" begin="0s" from="50 57.5, 50 57.5, 50 57.5" to="50 -75, 175 126, -75 126"></animate>
-                  </polygon>
-                  <polygon points="" fill="none" stroke="hsl(240,100%,70%)" strokeWidth="5">
-                    <animate attributeName="points" repeatCount="indefinite" dur="4s" begin="1s" from="50 57.5, 50 57.5, 50 57.5" to="50 -75, 175 126, -75 126"></animate>
-                  </polygon>
-                  <polygon points="" fill="none" stroke="hsl(160,100%,70%)" strokeWidth="5">
-                    <animate attributeName="points" repeatCount="indefinite" dur="4s" begin="2s" from="50 57.5, 50 57.5, 50 57.5" to="50 -75, 175 126, -75 126"></animate>
-                  </polygon>
-                  <polygon points="" fill="none" stroke="hsl(80,100%,70%)" strokeWidth="5">
-                    <animate attributeName="points" repeatCount="indefinite" dur="4s" begin="3s" from="50 57.5, 50 57.5, 50 57.5" to="50 -75, 175 126, -75 126"></animate>
-                  </polygon>
-                </svg>
-              ))}
-            </div>}
-
           <p className={styles.itemsText}>
             {majeure}
           </p>
