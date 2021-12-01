@@ -22,7 +22,9 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
     animationDuration: "1s",
   } : {};
 
-  const redir_uri = publicRuntimeConfig.redirectUrl;
+  const redir_uri: string = publicRuntimeConfig.redirectUrl;
+  const formatUrl = (majeure: string) =>
+    `http${redir_uri.includes('localhost') ? '' : 's'}://${majeure}.${redir_uri}`
 
   return (
     <div className={styles.ring} style={additionalStyles}>
@@ -40,7 +42,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
           cursor: 'pointer',
         }}
 
-        onClick={() => { window.location.href = `https://${shuffledMajeures[0]}.${redir_uri}` }}
+        onClick={() => { window.location.href = formatUrl(shuffledMajeures[0]) }}
       >
         {isStop &&
           <div style={{
@@ -75,7 +77,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
             position: 'absolute',
             cursor: 'pointer',
           }}
-          onClick={() => { window.location.href = `https://${majeure}.${redir_uri}` }}
+          onClick={() => { window.location.href = formatUrl(majeure) }}
         >
           <p className={styles.itemsText}>
             {majeure}
