@@ -20,8 +20,8 @@
   justify-content: center;
   align-items: center;
 
-  -webkit-perspective: 800;
-  perspective: 800;
+  -webkit-perspective: 800px;
+  perspective: 800px;
 }
 
 .rotate {
