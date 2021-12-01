@@ -12,6 +12,7 @@ type RingProps = {
 
 import availableDomains from '../public/majeures.json';
 import Triangle from './triangle';
+import Head from 'next/Head';
 
 const majeures = Object.keys(availableDomains).map((m) => m.toLocaleUpperCase());
 
@@ -109,20 +110,50 @@ const MajeureRandom = () => {
     setshuffle(shuffleArray(majeures));
   }, [])
 
+  const title = `EPITA R.I.P.`;
+  const description = `EPITA R.I.P.,
+Comment bien choisir sa majeure à EPITA ?,
+Nous allons choisir pour vous !`;
+  const imageUrl = 'https://epita.rip/epita.svg';
+  const url = 'https://epita.rip';
+
   return (
-    <div className={styles.stage}>
-      <div className={styles.rotate}>
-        <Ring isStop={stop} shuffledMajeures={shuffle} />
-        {!stop &&
-          <button className={styles.button} onClick={() => setStop(true)}>
-            Gogo gadgeto Random()
-          </button> ||
-          <button className={styles.button} onClick={refresh}>
-            Re-roll
-          </button>
-        }
-      </div>
-    </div >
+    <>
+      <Head>
+        <title>{title}</title>
+
+        <meta charSet="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content="EPITA, majeure, roulette, random, choisir, choice" />
+        <meta name="author" content="Erwan Vivien" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={url} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:url" content={url} />
+      </Head>
+      <div className={styles.stage}>
+        <div className={styles.rotate}>
+          <Ring isStop={stop} shuffledMajeures={shuffle} />
+          {!stop &&
+            <button className={styles.button} onClick={() => setStop(true)}>
+              Gogo gadgeto Random()
+            </button> ||
+            <button className={styles.button} onClick={refresh}>
+              Re-roll
+            </button>
+          }
+        </div>
+      </div >
+    </>
   )
 }
 
