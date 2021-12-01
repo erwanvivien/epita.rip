@@ -91,19 +91,24 @@ function shuffleArray(array: any[]) {
 
 const MajeureRandom = () => {
   const [stop, setStop] = useState(false);
-  const [shuffle, setshuffle] = useState(majeures)
+  const [shuffle, setshuffle] = useState(majeures);
 
   useEffect(() => {
     setshuffle(shuffleArray(majeures));
-  }, [])
+  }, [stop])
 
   return (
     <div className={styles.stage}>
       <div className={styles.rotate}>
         <Ring isStop={stop} shuffledMajeures={shuffle} />
-        <button className={styles.button} onClick={() => setStop(true)}>
-          Gogo gadgeto Random()
-        </button>
+        {!stop &&
+          <button className={styles.button} onClick={() => setStop(true)}>
+            Gogo gadgeto Random()
+          </button> ||
+          <button className={styles.button} onClick={() => setStop(false)}>
+            Re-roll
+          </button>
+        }
       </div>
     </div >
   )
