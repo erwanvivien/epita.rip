@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import getConfig from 'next/config'
 import styles from '../styles/Home.module.css'
+import Head from 'next/head';
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig
 const { publicRuntimeConfig } = getConfig()
@@ -12,7 +13,6 @@ type RingProps = {
 
 import availableDomains from '../public/majeures.json';
 import Triangle from './triangle';
-import Head from 'next/Head';
 
 const majeures = Object.keys(availableDomains).map((m) => m.toLocaleUpperCase());
 

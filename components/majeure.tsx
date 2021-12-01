@@ -1,6 +1,6 @@
 import styles from '../styles/Majeure.module.css'
 import stylesMajeure from '../styles/Home.module.css'
-import Head from 'next/Head';
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Triangle from './triangle';
 
