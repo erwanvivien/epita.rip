@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import getConfig from 'next/config'
 import styles from '../styles/Home.module.css'
 
+// Only holds serverRuntimeConfig and publicRuntimeConfig
+const { publicRuntimeConfig } = getConfig()
 
 type RingProps = {
   isStop: boolean;
@@ -19,6 +22,8 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
     animationDuration: "1s",
   } : {};
 
+  const redir_uri = publicRuntimeConfig.redirectUrl;
+
   return (
     <div className={styles.ring} style={additionalStyles}>
       <div
@@ -35,7 +40,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
           cursor: 'pointer',
         }}
 
-        onClick={() => { window.location.href = `http://${shuffledMajeures[0]}.${process.env.REDIRECT_URL}` }}
+        onClick={() => { window.location.href = `http://${shuffledMajeures[0]}.${redir_uri}` }}
       >
         {isStop &&
           <div style={{
@@ -70,7 +75,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
             position: 'absolute',
             cursor: 'pointer',
           }}
-          onClick={() => { window.location.href = `http://${majeure}.${process.env.REDIRECT_URL}` }}
+          onClick={() => { window.location.href = `http://${majeure}.${redir_uri}` }}
         >
           <p className={styles.itemsText}>
             {majeure}
