@@ -40,7 +40,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
           cursor: 'pointer',
         }}
 
-        onClick={() => { window.location.href = `http://${shuffledMajeures[0]}.${redir_uri}` }}
+        onClick={() => { window.location.href = `https://${shuffledMajeures[0]}.${redir_uri}` }}
       >
         {isStop &&
           <div style={{
@@ -75,7 +75,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
             position: 'absolute',
             cursor: 'pointer',
           }}
-          onClick={() => { window.location.href = `http://${majeure}.${redir_uri}` }}
+          onClick={() => { window.location.href = `https://${majeure}.${redir_uri}` }}
         >
           <p className={styles.itemsText}>
             {majeure}
@@ -98,9 +98,14 @@ const MajeureRandom = () => {
   const [stop, setStop] = useState(false);
   const [shuffle, setshuffle] = useState(majeures);
 
+  const refresh = () => {
+    setStop(false);
+    setshuffle(shuffleArray(majeures))
+  }
+
   useEffect(() => {
     setshuffle(shuffleArray(majeures));
-  }, [stop])
+  }, [])
 
   return (
     <div className={styles.stage}>
@@ -110,7 +115,7 @@ const MajeureRandom = () => {
           <button className={styles.button} onClick={() => setStop(true)}>
             Gogo gadgeto Random()
           </button> ||
-          <button className={styles.button} onClick={() => setStop(false)}>
+          <button className={styles.button} onClick={refresh}>
             Re-roll
           </button>
         }
