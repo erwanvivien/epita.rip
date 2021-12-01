@@ -17,7 +17,7 @@ import Head from 'next/Head';
 const majeures = Object.keys(availableDomains).map((m) => m.toLocaleUpperCase());
 
 const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
-  const additionalStyles = isStop ? {
+  const additionalStyleRing = isStop ? {
     animationIterationCount: 1,
     animationTimingFunction: "ease-out",
     animationDuration: "1s",
@@ -28,34 +28,19 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
     `http${redir_uri.includes('localhost') ? '' : 's'}://${majeure}.${redir_uri}`
 
   return (
-    <div className={styles.ring} style={additionalStyles}>
+    <div className={styles.ring} style={additionalStyleRing}>
       <div
         className={styles.poster + (isStop ? ` ${styles.selected_majeure}` : '')}
         style={{
-          borderWidth: 0,
-          transform: isStop ?
-            `rotateX(0deg) translateX(-50%) scale(1.5) translateZ(200px)` :
-            `rotateX(0deg) translateX(-50%) translateZ(200px)`,
-          backgroundColor: isStop ? "red" : "",
-          opacity: isStop ? 1 : 0.7,
-
-          position: 'absolute',
-          cursor: 'pointer',
+          transform: isStop ? 'rotateX(0deg) translateX(-50%) scale(1.5) translateZ(200px)' :
+            'rotateX(0deg) translateX(-50%) translateZ(200px)',
+          opacity: isStop ? 1 : '',
         }}
-
         onClick={() => { window.location.href = formatUrl(shuffledMajeures[0]) }}
       >
         {isStop &&
-          <div style={{
-            height: "100px",
-            width: "100%",
-            display: 'flex',
-            flexDirection: "row",
-            position: 'absolute',
-            top: '0px',
-            overflow: 'hidden',
-            borderRadius: 4,
-            zIndex: -1,
+          <div className={styles.triangle_container} style={{
+
           }}>
             {[...Array(6)].map((_, idx) => (
               <Triangle key={idx} />
@@ -71,12 +56,8 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
         <div key={idx}
           className={styles.poster}
           style={{
-            borderWidth: 0,
             transform: `rotateX(${(360 / majeures.length) * (idx + 1)}deg) translateX(-50%) translateZ(200px)`,
-            opacity: isStop ? 1 : 0.7,
-
-            position: 'absolute',
-            cursor: 'pointer',
+            opacity: isStop ? 1 : '',
           }}
           onClick={() => { window.location.href = formatUrl(majeure) }}
         >

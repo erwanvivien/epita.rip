@@ -19,7 +19,7 @@
 
 .shape {
   width: 200px;
-  height: 230px;
+  height: 100px;
 
   -webkit-clip-path: polygon(
     50% 0%,
