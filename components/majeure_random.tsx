@@ -34,7 +34,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
         style={{
           transform: isStop ? 'rotateX(0deg) translateX(-50%) scale(1.5) translateZ(200px)' :
             'rotateX(0deg) translateX(-50%) translateZ(200px)',
-          opacity: isStop ? 1 : '',
+          opacity: isStop ? 1 : 0.7,
         }}
         onClick={() => { window.location.href = formatUrl(shuffledMajeures[0]) }}
       >
@@ -57,7 +57,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
           className={styles.poster}
           style={{
             transform: `rotateX(${(360 / majeures.length) * (idx + 1)}deg) translateX(-50%) translateZ(200px)`,
-            opacity: isStop ? 1 : '',
+            opacity: isStop ? 1 : 0.7,
           }}
           onClick={() => { window.location.href = formatUrl(majeure) }}
         >
