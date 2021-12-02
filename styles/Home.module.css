@@ -27,20 +27,17 @@
 .rotate {
   margin: 0 auto;
   width: 600px;
-  height: 400px;
+  height: 600px;
 
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 
   display: flex;
   flex-direction: column;
-  gap: 220px;
+  /* gap: 220px; */
 
   justify-content: center;
   align-items: center;
-
-  margin-top: 50%;
-  transform: translateY(-50%);
 }
 
 .triangle_container {
@@ -82,8 +79,8 @@
 
 .ring {
   margin: 0 auto;
-  height: 100px;
-  width: 600px;
+  height: 500px;
+  /* width: 600px; */
 
   display: flex;
   justify-content: center;
@@ -183,5 +180,16 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .poster,
+  .button {
+    min-width: 60vw;
+  }
+
+  .button {
+    font-size: 4vmin;
   }
 }
