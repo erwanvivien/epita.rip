@@ -10,8 +10,8 @@ type PropsMajeure = {
 
 const MajeureFound = ({ text }: PropsMajeure) => {
   const title = `EPITA R.I.P. — ${text}`;
-  const description = `EPITA R.I.P. — ${text},
-Comment bien choisir sa majeure à EPITA ?,
+  const description = `EPITA R.I.P. — ${text}
+Vous ne savez pas choisir votre majeure à EPITA ?
 Nous avons choisi ${text} pour vous !`;
   const imageUrl = 'https://epita.rip/epita.svg';
   const [url, setUrl] = useState('');
@@ -46,7 +46,7 @@ Nous avons choisi ${text} pour vous !`;
 
       <div className={styles.overlay}>
         <div className={styles.container}>
-          {[...Array(60)].map((_, idx) => (
+          {[...Array(120)].map((_, idx) => (
             <Triangle key={idx} />
           ))}
         </div>

@@ -12,14 +12,14 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(10, 200px);
-  grid-template-rows: repeat(10, 230px);
+  grid-template-columns: repeat(15, 200px);
+  grid-template-rows: repeat(10, 200px);
   transform: translate(-3%, -4%);
 }
 
 .shape {
   width: 200px;
-  height: 100px;
+  height: 200px;
 
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }

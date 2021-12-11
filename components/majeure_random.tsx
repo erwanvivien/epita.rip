@@ -92,8 +92,8 @@ const MajeureRandom = () => {
   }, [])
 
   const title = `EPITA R.I.P.`;
-  const description = `EPITA R.I.P.,
-Comment bien choisir sa majeure à EPITA ?,
+  const description = `EPITA R.I.P.
+Comment bien choisir sa majeure à EPITA ?
 Nous allons choisir pour vous !`;
   const imageUrl = 'https://epita.rip/epita.svg';
   const url = 'https://epita.rip';
