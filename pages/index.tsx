@@ -12,14 +12,14 @@ import availableDomains from '../public/majeures.json';
 import MajeureRandom from '../components/majeure_random';
 
 type Props = {
-  subdomain: string,
-  epiteanSub: boolean,
+  subdomain: string;
+  epiteanSub: boolean;
 };
 
 
 export default function Home({ subdomain, epiteanSub }: Props) {
   if (epiteanSub) {
-    return <MajeureFound text={availableDomains[subdomain]} />
+    return <MajeureFound subdomain={subdomain} />
   }
   return <MajeureRandom />
 }
