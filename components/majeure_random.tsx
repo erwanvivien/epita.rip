@@ -43,7 +43,7 @@ const Ring = ({ isStop, shuffledMajeures }: RingProps) => {
 
           }}>
             {[...Array(6)].map((_, idx) => (
-              <Triangle key={idx} />
+              <Triangle key={idx} majeure={shuffledMajeures[0]} />
             ))}
           </div>}
 

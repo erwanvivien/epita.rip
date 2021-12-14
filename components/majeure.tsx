@@ -5,14 +5,18 @@ import { useEffect, useState } from 'react';
 import Triangle from './triangle';
 
 type PropsMajeure = {
-  text: string;
+  subdomain: string;
 }
 
-const MajeureFound = ({ text }: PropsMajeure) => {
-  const title = `EPITA R.I.P. — ${text}`;
-  const description = `EPITA R.I.P. — ${text}
+import availableDomains from '../public/majeures.json';
+
+const MajeureFound = ({ subdomain }: PropsMajeure) => {
+  const majeured = availableDomains[subdomain];
+
+  const title = `EPITA R.I.P. — ${majeured}`;
+  const description = `EPITA R.I.P. — ${majeured}
 Vous ne savez pas choisir votre majeure à EPITA ?
-Nous avons choisi ${text} pour vous !`;
+Nous avons choisi ${majeured} pour vous !`;
   const imageUrl = 'https://epita.rip/epita.svg';
   const [url, setUrl] = useState('');
 
@@ -47,13 +51,13 @@ Nous avons choisi ${text} pour vous !`;
       <div className={styles.overlay}>
         <div className={styles.container}>
           {[...Array(120)].map((_, idx) => (
-            <Triangle key={idx} />
+            <Triangle key={idx} majeure={subdomain} />
           ))}
         </div>
       </div>
       <div className={stylesMajeure.container}>
         <h1 className={stylesMajeure.majeure}>
-          {text}
+          {majeured}
         </h1>
       </div>
     </>
